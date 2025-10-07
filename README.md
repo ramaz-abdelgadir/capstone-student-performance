@@ -1,6 +1,6 @@
-# Project XYZ
+#  Student Performance Project
 
-**Project XYZ** is a comprehensive data analysis tool designed to streamline data exploration, analysis, and visualisation. The tool supports multiple data formats and provides an intuitive interface for both novice and expert data scientists.
+**Student Performance** is a comprehensive data analysis tool designed to streamline data exploration, analysis, and visualisation. The tool supports multiple data formats and provides an intuitive interface for both novice and expert data scientists.
 
 # ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
@@ -10,11 +10,45 @@
 
 
 ## Business Requirements
-* Describe your business requirements
+* The purpose of this project is to analyse the academic behaviour and performance of students to help educators identify the factors that most influence final grades.
+By exploring relationships between study habits, attendance, participation, and achievement, the project provides data-driven insights that can guide teaching strategies, student support, and academic planning.
 
+Primary Business Objectives
+
+1. Understand academic drivers: Determine how self-study hours, attendance, and class participation influence student grades.
+
+2. Predict academic outcomes: Build statistical and machine-learning models to estimate student performance and identify at-risk learners.
+
+3. Support data-informed decisions: Present actionable insights in an interactive Power BI dashboard for teachers and administrators.
+
+4. Encourage student engagement: Use insights to design interventions that promote better attendance, active participation, and consistent study habits.
 
 ## Hypothesis and how to validate?
-* List here your project hypothesis(es) and how you envision validating it (them) 
+1. Students with higher study time will achieve higher average scores.
+
+2. Students who participate more in class have higher education levels tend to perform better.
+
+3. There is a significant difference in average scores between students with and without good attendance level.
+
+## Validation approach:
+
+* Method: Correlation and group comparison.
+
+* Python: Compute correlation between weekly_self_study and grade, and visualise with scatterplot or boxplot.
+
+* Power BI: Create a line or bar chart with weekly_self_study on the axis and average grade as values.
+
+* Method: Correlation and grouped mean comparison (ANOVA if participation is categorical).
+
+* Python: Compare mean grade across different participation levels.
+
+* Power BI: Use a clustered column chart with class_participation as axis and average grade as values.
+
+* Method: Correlation and independent samples T-test (if you categorise attendance).
+
+* Python: Categorise attendance (e.g., ≥90 % = “Good”, <90 % = “Low”) and test grade differences.
+
+* Power BI: Compare average grades by attendance level using a column chart.
 
 ## Project Plan
 * Outline the high-level steps taken for the analysis.
@@ -22,28 +56,73 @@
 * Why did you choose the research methodologies you used?
 
 ## The rationale to map the business requirements to the Data Visualisations
-* List your business requirements and a rationale to map them to the Data Visualisations
+* Each business requirement is linked to specific data visualisations that enable clear, evidence-based insights.
+The following table and explanations describe how and why each chart or visual directly supports the project’s analytical goals.
+
+| **Business Requirement (BR)**                                                      | **Question / Hypothesis**                                           | **Data Visualisation(s)**                                                                                                                 | **Rationale / Insight Gained**                                                                                                                                 |
+| ---------------------------------------------------------------------------------- | ------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **BR-01:** Determine whether higher weekly self-study hours lead to higher grades. | *Students who spend more time on self-study achieve higher grades.* | **Scatter plot / Line chart**: `weekly_self_study` (X-axis) vs. `grade` (Y-axis).<br>**Trendline** to show correlation.                   | Clearly shows whether study time has a positive or flat relationship with grade. Helps educators identify the ideal study range for improvement.               |
+| **BR-02:** Understand the impact of attendance on academic performance.            | *Students with higher attendance achieve better grades.*            | **Column chart**: Average `grade` by `attendance_level` (“Good” vs “Low”).<br>**Card visual** for average grade difference.               | Allows direct comparison of grade means between good and poor attendance groups. Makes statistical T-test result visually intuitive.                           |
+| **BR-03:** Evaluate whether classroom participation influences grades.             | *Students who participate more in class tend to perform better.*    | **Clustered bar chart**: `class_participation` vs. average `grade`.<br>**Boxplot** to show grade variability across participation levels. | Highlights whether engagement (participation score) consistently corresponds to higher grades. Identifies performance spread among active vs passive students. |
+| **BR-04:** Identify which factors together most influence student grades.          | *Combined impact of study, attendance, and participation.*          | **Correlation heatmap / Decomposition tree** showing `grade` vs. predictors.<br>**Scatter matrix** (optional).                            | Displays multivariate relationships to identify key predictors driving performance. Enables data-driven prioritisation for interventions.                      |
+| **BR-05:** Provide an overview of key performance indicators (KPIs).               | *Summarise overall academic trends and averages.*                   | **Card visuals:** Average Grade, Average Attendance %, Average Study Hours.<br>**Donut chart:** Grade distribution.                       | Offers management a quick snapshot of overall student performance and progress. Simplifies complex analytics into clear KPIs for reporting.                    |
+
 
 ## Analysis techniques used
-* List the data analysis methods used and explain limitations or alternative approaches.
-* How did you structure the data analysis techniques. Justify your response.
-* Did the data limit you, and did you use an alternative approach to meet these challenges?
-* How did you use generative AI tools to help with ideation, design thinking and code optimisation?
+1. The analysis followed a logical progression, ensuring clarity and reproducibility:
+
+2. Data Cleaning & Preparation → Ensured dataset accuracy and completeness (handled missing values, encoded variables).
+
+2. Exploratory Data Analysis (EDA) → Used visuals and summary statistics to discover patterns and correlations.
+
+3. Hypothesis Testing → Used statistical methods (T-test, ANOVA) to confirm or reject assumptions.
+
+4. Predictive Modelling → Applied regression and decision tree models to quantify and predict performance outcomes.
+
+5. Segmentation (Clustering) → Grouped students by similar learning patterns for actionable insights.
+
+6. Visual Communication → Presented findings through Power BI for stakeholder interpretation.
+
+Justification:
+This structured approach mirrors the CRISP-DM model and allows each phase to build logically on the previous one — from understanding the problem to delivering interpretable, evidence-based results.
+
+## Reflection:
+Generative AI acted as a collaborative assistant — helping to speed up development and improve code quality — but human oversight remained essential to ensure context accuracy, ethical integrity, and data validity.
 
 ## Ethical considerations
-* Were there any data privacy, bias or fairness issues with the data?
-* How did you overcome any legal or societal issues?
+Ethical, legal, and social responsibility are essential components of all data analytics work — particularly when handling information about students.
+This section outlines how privacy, bias, and fairness were considered throughout the project and how potential issues were addressed.
 
 ## Dashboard Design
-* List all dashboard pages and their content, either blocks of information or widgets, like buttons, checkboxes, images, or any other item that your dashboard library supports.
-* Later, during the project development, you may revisit your dashboard plan to update a given feature (for example, at the beginning of the project you were confident you would use a given plot to display an insight but subsequently you used another plot type).
-* How were data insights communicated to technical and non-technical audiences?
-* Explain how the dashboard was designed to communicate complex data insights to different audiences. 
+It’s tailored to your Student Performance dataset (student_id, weekly_self_study, attendance, class_participation, grade) and describes the visuals, layout, interactivity, and communication rationale for both technical and non-technical audiences.
+
+### 📊 Dashboard Design
+
+The Power BI dashboard was designed to communicate insights about student performance clearly and interactively, enabling both technical users (data analysts, educators) and non-technical stakeholders (teachers, administrators) to explore key factors that influence academic outcomes.
+
+The design follows the information hierarchy principle — starting from high-level KPIs on the Overview page and progressively allowing deeper analytical exploration through filters, drill-downs, and visual interactions.
+
+### Interactivity and Widgets
+
+Slicers / Filters: Enable users to dynamically view performance based on attendance or participation levels.
+
+Buttons: Navigate between pages and reset filters.
+
+Tooltips: Provide contextual explanations of metrics when hovering over visuals.
+
+Cards: Summarise key KPIs such as Average Grade or Correlation Score for instant insight.
+
+Custom Themes: Use consistent colour schemes (blue for study, green for attendance, orange for participation) to aid comprehension.
 
 ## Unfixed Bugs
-* Please mention unfixed bugs and why they were not fixed. This section should include shortcomings of the frameworks or technologies used. Although time can be a significant variable to consider, paucity of time and difficulty understanding implementation are not valid reasons to leave bugs unfixed.
-* Did you recognise gaps in your knowledge, and how did you address them?
-* If applicable, include evidence of feedback received (from peers or instructors) and how it improved your approach or understanding.
+Throughout the project, several minor issues and limitations were identified.
+Where possible, workarounds were implemented — however, some remain unfixed due to framework constraints or deliberate prioritisation of higher-value tasks.
+* my notebook was using the Agg backend. I had to switch to the  inlinr backend by the following code:
+ #### %matplotlib inline
+ #### import matpoltlib
+ #### print("backend:", matplotlib.get_backend)
+
+  * when trying to push any updates the notebook is trying to find the data file but can't locate it because the working directory is not set correctly. To fix this Co Pilot helped by first checking the current state and then updating the path detection logic.
 
 ## Development Roadmap
 * What challenges did you face, and what strategies were used to overcome these challenges?
