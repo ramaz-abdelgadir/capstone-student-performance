@@ -144,7 +144,37 @@ Where possible, workarounds were implemented — however, some remain unfixed du
 
 
 ## Main Data Analysis Libraries
-* Here you should list the libraries you used in the project and provide an example(s) of how you used these libraries.
+* Pandas
+
+Purpose: Data cleaning, manipulation, and analysis.
+
+* NumPy
+
+Purpose: Numerical operations and array-based calculations.
+
+* Matplotlib
+
+Purpose: Basic plotting and custom visualisation design.
+
+* Seaborn
+
+Purpose: Advanced visualisation and statistical plots.
+
+* SciPy
+
+Purpose: Hypothesis testing and advanced statistical analysis.
+
+* Scikit-learn
+
+Purpose: Machine learning modelling and evaluation.
+
+* Plotly (Optional for Power BI / Jupyter Integration)
+
+Purpose: Interactive charts for data exploration and integration with Power BI or HTML dashboards.
+
+* Power BI (External Tool)
+
+Purpose: Interactive visualisation and dashboard development.
 
 
 ## Credits 
