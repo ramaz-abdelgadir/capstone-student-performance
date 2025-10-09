@@ -6,8 +6,35 @@
 
 
 ## Dataset Content
-* Describe your dataset. Choose a dataset of reasonable size to avoid exceeding the repository's maximum size of 100Gb.
+* The dataset used for this project is titled “Student Performance Dataset”, sourced from Kaggle, https://www.kaggle.com/datasets/nabeelqureshitiii/student-performance-dataset?resource=download&select=student_performance.csv It contains anonymised records of students’ academic behaviour and performance, collected to understand factors influencing achievement.
 
+The dataset is cleaned, structured, and stored in CSV format under the project’s Data/cleaned/ folder (student_performance_cleaned.csv).
+Each record represents one student, with attributes describing their learning habits, attendance, engagement, and academic results.
+
+Dataset Size and Sampling
+
+Original dataset: 1,000,000 rows
+
+Reason for sampling:
+The raw dataset contained 1 million records, which caused long processing and loading times during data transformation and visualisation in Power BI and Jupyter Notebook.
+
+Solution:
+A stratified random sample of 10,000 rows (1%) was extracted to maintain a balanced representation of different grades and participation levels while optimising performance.
+
+Final working dataset: 10,000 rows × 6 columns (~2 MB)
+The columns are:
+### student_id,
+### weekly_self_study_hours,
+### attendance_percentage,
+### class_participation,
+### total_score,
+### grade
+
+Storage location:
+
+Raw dataset → Data/1_raw/student_performance.csv
+
+Cleaned and sampled dataset → Data/cleaned/student_performance_sample.csv
 
 ## Business Requirements
 * The purpose of this project is to analyse the academic behaviour and performance of students to help educators identify the factors that most influence final grades.
@@ -51,12 +78,98 @@ Primary Business Objectives
 * Power BI: Compare average grades by attendance level using a column chart.
 
 ## Project Plan
-* Outline the high-level steps taken for the analysis.
-* How was the data managed throughout the collection, processing, analysis and interpretation steps?
-* Why did you choose the research methodologies you used?
+### Overview
+
+The project followed a structured data analytics lifecycle, starting from data acquisition to insight generation and dashboard design.
+Each stage was designed to ensure data accuracy, reproducibility, and alignment with business goals — identifying key behavioural factors influencing student achievement.
+
+### 1. Data Collection
+
+The dataset was sourced from Kaggle’s Student Performance Dataset, containing 1 million records of anonymised student data.
+
+The raw file (student_performance.csv) was stored in the repository under Data/1_raw/.
+
+### 2. Data Processing (Cleaning & Preparation)
+
+To ensure efficiency and accuracy, an ETL pipeline was built in Python (Jupyter Notebook).
+
+#### Key steps:
+
+1. Removed missing or duplicate rows.
+
+2. Standardised column names.
+
+3. Created derived features:
+
+4. StudyTimeBand (grouped weekly hours)
+
+ParticipationLevel (Low–Very High)
+
+attendance_level (Good/Low)
+
+Validated column types (decimal, text, category).
+
+Created a stratified random sample of 10,000 rows (1%) to reduce processing time while maintaining balanced grade distribution.
+
+### 3. Data Analysis & Exploration (EDA)
+
+Exploratory Data Analysis (EDA) was conducted to uncover trends and relationships among variables.
+
+Techniques applied:
+
+Descriptive statistics (mean, median, standard deviation).
+
+Correlation analysis (between study time, participation, and grades).
+
+Visualisation using bar charts, scatter plots, and boxplots.
+
+Hypothesis testing for statistical significance.
+
+Examples of visualisations:
+
+Average Grade by Study Time Band
+
+Average Grade by Attendance Level
+
+Participation Level vs Grade Distribution
+
+ Tools used:
+Power BI (for visuals), Python (Matplotlib, Seaborn for validation plots)
+
+### 4. Hypothesis Validation
+
+Three hypotheses were defined and validated using statistical and visual methods.
+
+### 5. Dashboard Design & Interpretation
+
+An interactive dashboard was built in Power BI to communicate insights to both technical and non-technical audiences.
+
+Key dashboard pages:
+
+Overview Page: Summary KPIs (average grade, attendance rate, study time).
+
+Behavioural Insights Page: Study time, attendance, and participation comparisons.
+
+Trends Page: Correlation visuals and performance insights.
+
+The dashboard visually demonstrates how student engagement factors influence achievement.
+
+ Tool used:
+Power BI (with filters, slicers, cards, and clustered column charts)
+
+### 6. Reflection and Interpretation
+
+After analysis, insights were interpreted to support educational recommendations:
+
+Encouraging consistent attendance and regular self-study.
+
+Promoting classroom participation to improve performance outcomes.
+
+Limitations, such as data sampling size and generalisation scope, were acknowledged, and alternative approaches (e.g., using regression models or larger data samples) were suggested for future work.
 
 ## The rationale to map the business requirements to the Data Visualisations
-* Each business requirement is linked to specific data visualisations that enable clear, evidence-based insights.
+Each business requirement in this project was translated into specific, evidence-based data visualisations.
+The goal was to ensure that every visual provided a direct and actionable insight supporting data-driven decision-making.
 The following table and explanations describe how and why each chart or visual directly supports the project’s analytical goals.
 
 | **Business Requirement (BR)**                                                      | **Question / Hypothesis**                                           | **Data Visualisation(s)**                                                                                                                 | **Rationale / Insight Gained**                                                                                                                                 |
@@ -117,7 +230,7 @@ Custom Themes: Use consistent colour schemes (blue for study, green for attendan
 ## Unfixed Bugs
 Throughout the project, several minor issues and limitations were identified.
 Where possible, workarounds were implemented — however, some remain unfixed due to framework constraints or deliberate prioritisation of higher-value tasks.
-* my notebook was using the Agg backend. I had to switch to the  inlinr backend by the following code:
+* my notebook was using the Agg backend. I had to switch to the  inline backend by the following code:
  #### %matplotlib inline
  #### import matpoltlib
  #### print("backend:", matplotlib.get_backend)
