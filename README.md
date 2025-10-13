@@ -23,12 +23,12 @@ A stratified random sample of 10,000 rows (1%) was extracted to maintain a balan
 
 Final working dataset: 10,000 rows × 6 columns (~2 MB)
 The columns are:
-### student_id,
-### weekly_self_study_hours,
-### attendance_percentage,
-### class_participation,
-### total_score,
-### grade
+#### student_id,
+#### weekly_self_study_hours,
+#### attendance_percentage,
+#### class_participation,
+#### total_score,
+#### grade
 
 Storage location:
 
@@ -203,19 +203,60 @@ This structured approach mirrors the CRISP-DM model and allows each phase to bui
 Generative AI acted as a collaborative assistant — helping to speed up development and improve code quality — but human oversight remained essential to ensure context accuracy, ethical integrity, and data validity.
 
 ## Ethical considerations
-Ethical, legal, and social responsibility are essential components of all data analytics work — particularly when handling information about students.
-This section outlines how privacy, bias, and fairness were considered throughout the project and how potential issues were addressed.
+Ethical, legal, and social responsibility are essential components of all data analytics work — particularly when handling information about students. This section outlines how privacy, bias, and fairness were considered throughout the project and how potential issues were addressed.
 
-## Dashboard Design
-It’s tailored to your Student Performance dataset (student_id, weekly_self_study, attendance, class_participation, grade) and describes the visuals, layout, interactivity, and communication rationale for both technical and non-technical audiences.
+### Data Privacy and Anonymity
 
-### 📊 Dashboard Design
+The dataset used (Student Performance Dataset) did not include any personally identifiable information (PII) such as student names, IDs, addresses, or contact details.
+
+All analysis focused solely on anonymised attributes — such as study time, attendance, class participation, and grades — ensuring no individual student could be identified.
+
+Data handling followed the principles of the UK General Data Protection Regulation (GDPR), which prioritises minimal data use and secure processing.
+
+The dataset was stored locally in secure folders and not shared publicly without anonymisation.
+
+### Bias and Fairness
+
+Efforts were made to identify and minimise analytical bias. For example:
+
+Statistical summaries and visualisations were reviewed to ensure no attribute (e.g., attendance or participation) was overrepresented or misinterpreted.
+
+Hypotheses were tested using objective metrics (e.g., mean grade comparisons) rather than subjective assumptions about student behaviour.
+
+When discussing relationships such as “higher attendance leads to better grades”, conclusions were carefully framed as correlations, not causations, to avoid misleading interpretations.
+
+The analysis aimed to represent all study time and attendance levels fairly, ensuring balanced insight across the dataset.
+
+### Legal and Social Implications
+
+The analysis and dashboard were developed solely for educational and research purposes, not for real-world decision-making about actual students.
+
+All content aligns with ethical academic practice and fair use of open data under Kaggle’s terms of use.
+
+The project promotes data literacy and transparency by demonstrating how ethical analytics can support student success rather than penalise individuals.
+
+### Responsible AI and Automation
+
+Generative AI (ChatGPT) was used responsibly to assist in:
+
+Writing documentation and explanations.
+
+Debugging Power BI visuals and Python code.
+
+Generating clear, unbiased narratives and summaries.
+
+All AI-assisted outputs were reviewed, verified, and edited by the author to ensure factual accuracy and integrity.
+
+The AI tools did not access or process private data; they were used only for design and learning support.
+
+
+## 📊 Dashboard Design
 
 The Power BI dashboard was designed to communicate insights about student performance clearly and interactively, enabling both technical users (data analysts, educators) and non-technical stakeholders (teachers, administrators) to explore key factors that influence academic outcomes.
 
 The design follows the information hierarchy principle — starting from high-level KPIs on the Overview page and progressively allowing deeper analytical exploration through filters, drill-downs, and visual interactions.
 
-### Interactivity and Widgets
+##  Interactivity and Widgets
 
 Slicers / Filters: Enable users to dynamically view performance based on attendance or participation levels.
 
@@ -237,23 +278,50 @@ Where possible, workarounds were implemented — however, some remain unfixed du
 
   * when trying to push any updates the notebook is trying to find the data file but can't locate it because the working directory is not set correctly. To fix this Co Pilot helped by first checking the current state and then updating the path detection logic.
 
+  * During the development and deployment of the Power BI dashboard, a few activation and interaction issues were encountered.
+  * While testing predictive visuals, the “+” expand option in the Decomposition Tree did not appear.
+
+  * If I had more time, I would have further refined the Power BI dashboard by addressing minor issues that occurred during the activation and publishing stages. Specifically:
+
+I would explore alternative solutions for visuals that occasionally failed to load (particularly AI visuals such as the Decomposition Tree).
+
+I would optimise data refresh automation and workspace configuration in the Power BI Service to ensure smoother deployment.
+
+I would also test additional advanced features such as conditional formatting in KPIs, tooltips for better insight communication, and cloud-based collaboration options.
+
+These enhancements would ensure the dashboard is more robust, automated, and ready for long-term use. Despite these challenges, the current dashboard successfully meets the main project objectives and demonstrates the ability to analyse, visualise, and interpret data effectively.
+
 ## Development Roadmap
-* What challenges did you face, and what strategies were used to overcome these challenges?
-* What new skills or tools do you plan to learn next based on your project experience? 
+During the development of the Student Performance Analysis project, several challenges were encountered, especially when integrating multiple data analysis tools and new learning topics:
 
-## Deployment
-### Heroku
+* Time Constraints:
+The most significant challenge was limited time. While the main goals were achieved, some advanced Power BI features and deeper statistical tests could not be fully explored. To manage this, the focus remained on building a functional and visually clear dashboard that demonstrated the core hypotheses effectively.
 
-* The App live link is: https://YOUR_APP_NAME.herokuapp.com/ 
-* Set the runtime.txt Python version to a [Heroku-20](https://devcenter.heroku.com/articles/python-support#supported-runtimes) stack currently supported version.
-* The project was deployed to Heroku using the following steps.
+* New Concepts and Tools:
+This project introduced several new areas — including Power BI’s DAX calculations, conditional columns, and AI visuals like the Decomposition Tree. At first, these were unfamiliar, but with guidance from tutorials, documentation, and AI assistance (ChatGPT and Copilot), the features were gradually mastered.
 
-1. Log in to Heroku and create an App
-2. From the Deploy tab, select GitHub as the deployment method.
-3. Select your repository name and click Search. Once it is found, click Connect.
-4. Select the branch you want to deploy, then click Deploy Branch.
-5. The deployment process should happen smoothly if all deployment files are fully functional. Click now the button Open App on the top of the page to access your App.
-6. If the slug size is too large then add large files not required for the app to the .slugignore file.
+* Activation and Visual Issues in Power BI:
+Occasional technical problems (e.g., visuals not loading, slicers freezing, and Pro account activation) were resolved through troubleshooting, reapplying data refreshes, and revisiting data model connections.
+
+* Data Cleaning and Sampling:
+The raw dataset originally contained over 1,000,000 rows, which slowed performance. This was resolved by sampling 10,000 rows, cleaning missing values, and optimising column data types for faster analysis.
+
+Based on this project experience, several areas for professional growth have been identified:
+
+### Power BI Advanced Features:
+Deeper exploration of advanced DAX measures, dynamic tooltips, and drill-through pages to enhance interactivity.
+
+#### Machine Learning Integration:
+Extending the student performance analysis with Python machine learning models (e.g., Linear Regression or Decision Trees) to predict future grades based on attendance and study habits.
+
+#### Automation & Cloud Deployment:
+Learning to automate data refreshes using Power BI Service and linking the dashboard to cloud databases for real-time updates.
+
+#### Improved Project Management:
+Using GitHub Projects and issue tracking more effectively to manage workflow, commits, and feedback loops.
+
+#### Enhanced Data Storytelling:
+Developing stronger data narrative and visual design skills to communicate complex results to non-technical audiences.
 
 
 ## Main Data Analysis Libraries
@@ -292,21 +360,71 @@ Purpose: Interactive visualisation and dashboard development.
 
 ## Credits 
 
-* In this section, you need to reference where you got your content, media and extra help from. It is common practice to use code from other repositories and tutorials, however, it is important to be very specific about these sources to avoid plagiarism. 
-* You can break the credits section up into Content and Media, depending on what you have included in your project. 
+Content Sources
 
-### Content 
+Dataset:
+The Student Performance Dataset was sourced from Kaggle
+ and used for educational purposes under the dataset’s open-access license.
+The dataset was modified and cleaned for analysis and dashboard creation.
 
-- The text for the Home page was taken from Wikipedia Article A
-- Instructions on how to implement form validation on the Sign-Up page was taken from [Specific YouTube Tutorial](https://www.youtube.com/)
-- The icons in the footer were taken from [Font Awesome](https://fontawesome.com/)
+Code References:
 
-### Media
+Python tutorials and snippets were adapted from official documentation for libraries such as:
 
-- The photos used on the home and sign-up page are from This Open-Source site
-- The images used for the gallery page were taken from this other open-source site
+Pandas Documentation
+
+NumPy Documentation
+
+Matplotlib Documentation
+
+Seaborn Documentation
+
+AI assistance (ChatGPT/Copilot) was used for ideation, code optimisation, visualisation design, and explanatory markdown text throughout the Jupyter Notebook and Power BI project.
+
+Statistical test examples (mean, median, t-test, standard deviation, probability) were derived from open educational sources such as W3Schools and GeeksforGeeks for Python data analysis practice.
+
+Power BI & DAX:
+
+Official Microsoft Learn resources were referenced for DAX syntax and Power BI dashboard design.
+
+Conditional column logic and KPI creation were guided by Power BI community examples and tutorials.
 
 
 
-## Acknowledgements (optional)
-* Thank the people who provided support through this project.
+Conclusion & Future Work
+1️⃣ Project Summary
+
+This project successfully demonstrated the end-to-end process of data analysis — from data cleaning and transformation to visualisation and insight generation — using the Student Performance Dataset.
+Through the combination of Python-based preprocessing and a Power BI interactive dashboard, meaningful insights were derived about how study time, attendance, and class participation relate to overall student achievement.
+
+The dashboard allows users to explore performance patterns, compare groups, and validate hypotheses through clear visuals such as:
+
+KPI cards for key metrics (average grade, attendance, study hours, pass rate).
+
+Bar and scatter plots showing the relationship between study time, participation, and grades.
+
+Donut charts and decomposition trees providing overall summaries and predictive insights.
+
+The project also met its primary objective — to use data analytics techniques to support evidence-based decision-making in education and demonstrate how insights can improve student engagement and academic outcomes.
+
+Future Work and Improvements
+
+If given additional time and resources, several enhancements could be implemented to extend the project’s scope and impact:
+
+#### Machine Learning Models:
+Build predictive models (e.g., Linear Regression, Decision Tree, or Random Forest) to forecast student grades and identify at-risk learners.
+
+#### Automated Dashboard Updates:
+Connect Power BI to live databases or cloud sources (e.g., Azure SQL or SharePoint) to refresh the dashboard automatically.
+
+#### Deeper Statistical Analysis:
+Conduct hypothesis testing and correlation analysis to quantify the strength of each relationship and validate findings with greater accuracy.
+
+#### Enhanced Interactivity:
+Add dynamic filters, tooltips, and drill-through pages for department-level or term-based comparisons.
+
+#### Expanded Dataset:
+Integrate additional student attributes such as gender, study program, or school region to widen the analytical perspective.
+
+#### Ethical Monitoring:
+Continue ensuring fairness, bias mitigation, and compliance with educational data privacy standards.
